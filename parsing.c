@@ -38,9 +38,11 @@ int main(int argc, char **argv) {
 	mpca_lang(MPCA_LANG_DEFAULT,
 		  "                                                     \
 	    number   : /-?[0-9]+/ ;                             \
-	    decimal   : /-?[0-9]+\\.[0-9]+/ ;                             \
-	    operator : '+' | '-' | '*' | '/' | '%' ;                  \
-	    expr     :  <decimal> | <number> | '(' <operator> <expr>+ ')' ;  \
+	    decimal  : /-?[0-9]+\\.[0-9]+/ ;                    \
+	    operator : '+' | '-' | '*' | '/' | '%' | \"add\"    \
+	   	     | \"mul\" | \"div\" | \"sub\" ;            \
+	    expr     :  <decimal> | <number> 			\
+	    	     | '(' <operator> <expr>+ ')' ;  	 	\
 	    lispy    : /^/ <operator> <expr>+ /$/ ;             \
 	  ", Number, Decimal, Operator, Expr, Lispy);
 
